@@ -1,0 +1,66 @@
+{
+  "validation": {
+    "account_id_not_null": 6,
+    "amount_min_0": 4,
+    "status_allowed_values": 3,
+    "invoice_date_not_in_future": 2
+  },
+  "missing_in_target": [
+    "INV-100160",
+    "INV-100340",
+    "INV-100481",
+    "INV-100557",
+    "INV-100878",
+    "INV-101224",
+    "INV-102220",
+    "INV-102684",
+    "INV-103036",
+    "INV-103375",
+    "INV-103852",
+    "INV-104009"
+  ],
+  "amount_mismatches": [
+    "INV-100745",
+    "INV-100755",
+    "INV-101491",
+    "INV-101884",
+    "INV-102011",
+    "INV-102026",
+    "INV-102173",
+    "INV-102188",
+    "INV-102527",
+    "INV-102770",
+    "INV-102842",
+    "INV-102994",
+    "INV-103023",
+    "INV-103401",
+    "INV-103622",
+    "INV-103826",
+    "INV-103902",
+    "INV-104073",
+    "INV-104406",
+    "INV-104993"
+  ],
+  "status_mismatches": [
+    "INV-100800",
+    "INV-100877",
+    "INV-101643",
+    "INV-101667",
+    "INV-102151",
+    "INV-102350",
+    "INV-103665",
+    "INV-104890"
+  ],
+  "duplicates_in_target": [
+    "INV-100520",
+    "INV-102200",
+    "INV-103298"
+  ],
+  "missing_in_source": [
+    "INV-900001",
+    "INV-900002",
+    "INV-900003",
+    "INV-900004",
+    "INV-900005"
+  ]
+}

@@ -1,0 +1,26 @@
+title: "Invoice Reconciliation – Billing System vs Reporting Warehouse"
+report_name: billing_vs_warehouse
+output_dir: reports
+
+source:
+  name: Billing system
+  path: sample_data/billing_system.csv
+target:
+  name: Reporting warehouse
+  path: sample_data/reporting_warehouse.csv
+
+reconcile:
+  key: invoice_id
+  compare: [account_id, invoice_date, amount, status, region]
+  numeric_tolerance: 0.01     # ignore rounding differences up to 1 cent
+  normalise_text: true        # ignore case / leading & trailing spaces
+  sum_columns: [amount]
+
+validation:                   # rules applied to the source extract
+  - {column: invoice_id, rule: unique}
+  - {column: invoice_id, rule: pattern, value: '^INV-\d{6}$'}
+  - {column: account_id, rule: not_null}
+  - {column: amount, rule: min, value: 0}
+  - {column: status, rule: allowed_values, value: [Paid, Open, Overdue, Void]}
+  - {column: invoice_date, rule: is_date}
+  - {column: invoice_date, rule: not_in_future}

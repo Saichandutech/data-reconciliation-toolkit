@@ -1,0 +1,249 @@
+<!doctype html><html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Customer Master Reconciliation – CRM vs Billing</title><style>
+body{font-family:system-ui,-apple-system,Segoe UI,sans-serif;margin:0 auto;max-width:1000px;padding:24px 16px;color:#1f2937;background:#fff}
+h1{font-size:24px;margin-bottom:4px} h2{font-size:17px;margin-top:32px;border-bottom:1px solid #e5e7eb;padding-bottom:6px}
+.muted{color:#6b7280;font-size:13px} .cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px;margin-top:20px}
+.card{border:1px solid #e5e7eb;border-radius:8px;padding:14px;background:#f9fafb} .card.bad{background:#fef2f2;border-color:#fecaca}
+.v{font-size:24px;font-weight:700} .l{font-size:13px;color:#4b5563}
+.wrap{overflow-x:auto} table.t{border-collapse:collapse;font-size:13px;width:100%}
+.t th{background:#1f3a5f;color:#fff;text-align:left;padding:6px 8px} .t td{padding:6px 8px;border-bottom:1px solid #e5e7eb}
+</style></head><body>
+<h1>Customer Master Reconciliation – CRM vs Billing</h1><div class="muted">Generated 2026-10-13 02:13 · key: <code>account_id</code></div>
+<div class="cards"><div class='card'><div class='v'>98.25%</div><div class='l'>Fully reconciled</div></div><div class='card bad'><div class='v'>4</div><div class='l'>Missing in target</div></div><div class='card'><div class='v'>0</div><div class='l'>Missing in source</div></div><div class='card bad'><div class='v'>10</div><div class='l'>Records with mismatches</div></div><div class='card'><div class='v'>0</div><div class='l'>Duplicate keys (target)</div></div><div class='card bad'><div class='v'>2/5</div><div class='l'>Validation rules failed</div></div></div>
+
+<h2>Control totals</h2><div class="wrap"><table class="dataframe t">
+  <thead>
+    <tr style="text-align: right;">
+      <th>measure</th>
+      <th>source</th>
+      <th>target</th>
+      <th>variance</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>row_count</td>
+      <td>800</td>
+      <td>796</td>
+      <td>-4</td>
+    </tr>
+    <tr>
+      <td>sum(credit_limit)</td>
+      <td>1904300.0</td>
+      <td>1898000.0</td>
+      <td>-6300.0</td>
+    </tr>
+  </tbody>
+</table></div>
+<h2>Validation rules (source)</h2><div class="wrap"><table class="dataframe t">
+  <thead>
+    <tr style="text-align: right;">
+      <th>rule</th>
+      <th>column</th>
+      <th>check</th>
+      <th>failed_rows</th>
+      <th>pass_rate_pct</th>
+      <th>status</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>account_id_unique</td>
+      <td>account_id</td>
+      <td>unique</td>
+      <td>0</td>
+      <td>100.00</td>
+      <td>PASS</td>
+    </tr>
+    <tr>
+      <td>email_not_null</td>
+      <td>email</td>
+      <td>not_null</td>
+      <td>3</td>
+      <td>99.62</td>
+      <td>FAIL</td>
+    </tr>
+    <tr>
+      <td>email_pattern</td>
+      <td>email</td>
+      <td>pattern</td>
+      <td>0</td>
+      <td>100.00</td>
+      <td>PASS</td>
+    </tr>
+    <tr>
+      <td>credit_limit_min_0</td>
+      <td>credit_limit</td>
+      <td>min</td>
+      <td>2</td>
+      <td>99.75</td>
+      <td>FAIL</td>
+    </tr>
+    <tr>
+      <td>status_allowed_values</td>
+      <td>status</td>
+      <td>allowed_values</td>
+      <td>0</td>
+      <td>100.00</td>
+      <td>PASS</td>
+    </tr>
+  </tbody>
+</table></div>
+<h2>Mismatches by field</h2><div class="wrap"><table class="dataframe t">
+  <thead>
+    <tr style="text-align: right;">
+      <th>column</th>
+      <th>mismatches</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>credit_limit</td>
+      <td>2</td>
+    </tr>
+    <tr>
+      <td>email</td>
+      <td>3</td>
+    </tr>
+    <tr>
+      <td>plan</td>
+      <td>4</td>
+    </tr>
+    <tr>
+      <td>status</td>
+      <td>1</td>
+    </tr>
+  </tbody>
+</table></div>
+<h2>Field-level mismatches</h2><div class="wrap"><table class="dataframe t">
+  <thead>
+    <tr style="text-align: right;">
+      <th>account_id</th>
+      <th>column</th>
+      <th>source_value</th>
+      <th>target_value</th>
+      <th>difference</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>ACC-00035</td>
+      <td>credit_limit</td>
+      <td>-100.0</td>
+      <td>1000.0</td>
+      <td>1100.0</td>
+    </tr>
+    <tr>
+      <td>ACC-00148</td>
+      <td>email</td>
+      <td>—</td>
+      <td>user148@example.com</td>
+      <td>—</td>
+    </tr>
+    <tr>
+      <td>ACC-00206</td>
+      <td>plan</td>
+      <td>Premium</td>
+      <td>Basic</td>
+      <td>—</td>
+    </tr>
+    <tr>
+      <td>ACC-00267</td>
+      <td>status</td>
+      <td>Suspended</td>
+      <td>Active</td>
+      <td>—</td>
+    </tr>
+    <tr>
+      <td>ACC-00383</td>
+      <td>plan</td>
+      <td>Premium</td>
+      <td>Basic</td>
+      <td>—</td>
+    </tr>
+    <tr>
+      <td>ACC-00404</td>
+      <td>credit_limit</td>
+      <td>-100.0</td>
+      <td>2500.0</td>
+      <td>2600.0</td>
+    </tr>
+    <tr>
+      <td>ACC-00495</td>
+      <td>plan</td>
+      <td>Premium</td>
+      <td>Basic</td>
+      <td>—</td>
+    </tr>
+    <tr>
+      <td>ACC-00722</td>
+      <td>email</td>
+      <td>—</td>
+      <td>user722@example.com</td>
+      <td>—</td>
+    </tr>
+    <tr>
+      <td>ACC-00734</td>
+      <td>email</td>
+      <td>—</td>
+      <td>user734@example.com</td>
+      <td>—</td>
+    </tr>
+    <tr>
+      <td>ACC-00796</td>
+      <td>plan</td>
+      <td>Plus</td>
+      <td>Basic</td>
+      <td>—</td>
+    </tr>
+  </tbody>
+</table></div>
+<h2>Missing in target</h2><div class="wrap"><table class="dataframe t">
+  <thead>
+    <tr style="text-align: right;">
+      <th>account_id</th>
+      <th>email</th>
+      <th>state</th>
+      <th>plan</th>
+      <th>credit_limit</th>
+      <th>status</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>ACC-00192</td>
+      <td>user192@example.com</td>
+      <td>NM</td>
+      <td>Plus</td>
+      <td>2500.0</td>
+      <td>Active</td>
+    </tr>
+    <tr>
+      <td>ACC-00237</td>
+      <td>user237@example.com</td>
+      <td>OK</td>
+      <td>Plus</td>
+      <td>2500.0</td>
+      <td>Active</td>
+    </tr>
+    <tr>
+      <td>ACC-00262</td>
+      <td>user262@example.com</td>
+      <td>LA</td>
+      <td>Plus</td>
+      <td>2500.0</td>
+      <td>Active</td>
+    </tr>
+    <tr>
+      <td>ACC-00538</td>
+      <td>user538@example.com</td>
+      <td>OK</td>
+      <td>Plus</td>
+      <td>2500.0</td>
+      <td>Active</td>
+    </tr>
+  </tbody>
+</table></div>
+<h2>Missing in source</h2><div class="wrap"><p class='muted'>None found.</p></div>
+<h2>Duplicate keys in target</h2><div class="wrap"><p class='muted'>None found.</p></div>
+</body></html>

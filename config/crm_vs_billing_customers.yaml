@@ -1,0 +1,23 @@
+title: "Customer Master Reconciliation – CRM vs Billing"
+report_name: crm_vs_billing_customers
+output_dir: reports
+
+source:
+  name: CRM
+  path: sample_data/crm_customers.csv
+target:
+  name: Billing
+  path: sample_data/billing_customers.csv
+
+reconcile:
+  key: account_id
+  compare: [email, state, plan, credit_limit, status]
+  normalise_text: true
+  sum_columns: [credit_limit]
+
+validation:
+  - {column: account_id, rule: unique}
+  - {column: email, rule: not_null}
+  - {column: email, rule: pattern, value: '^[^@\s]+@[^@\s]+\.[a-z]{2,}$'}
+  - {column: credit_limit, rule: min, value: 0}
+  - {column: status, rule: allowed_values, value: [Active, Suspended, Closed]}
